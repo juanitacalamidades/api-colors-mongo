@@ -93,9 +93,9 @@ export function borrarColor(id){
 // Pruebas
 
 
-leerColores()
-.then(x => console.log(x))
-.catch(error => console.log(error))
+// leerColores()
+// .then(x => console.log(x))
+// .catch(error => console.log(error))
 
 // crearColor({ r : 0, g : 10, b : 0 })
 // .then(x => console.log(x))
