@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        fetch("/colores/borrar/21", {
+            method : "DELETE"/*,
+            body : JSON.stringify({ r : 0.23, g : 0, b : 0}),
+            headers : {
+                "Content-type" : "application/json"
+            }*/
+        })
+        .then( respuesta => console.log(respuesta.status))
+
+
+    </script>
+</body>
+</html>
