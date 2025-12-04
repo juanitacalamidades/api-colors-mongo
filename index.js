@@ -4,6 +4,7 @@ import cors from "cors";
 import {leerColores,crearColor,borrarColor} from "./datos.js";
 
 const servidor = express();
+const PORT = process.env.PORT || 3000;
 
 servidor.use(cors());
 
@@ -102,4 +103,6 @@ servidor.use((peticion,respuesta) => {
     respuesta.json({ error : "recurso no encontrado" });
 });
 
-servidor.listen(3000);
+servidor.listen(PORT, () => {
+    console.log("Servidor iniciado en puerto " + PORT);
+});
