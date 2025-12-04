@@ -2,6 +2,8 @@
 import express from "express";
 import cors from "cors";
 import {leerColores,crearColor,borrarColor} from "./datos.js";
+console.log("🔥 ESTE ES EL INDEX.JS ACTUAL");
+
 
 const servidor = express();
 const PORT = process.env.PORT || 3000;
