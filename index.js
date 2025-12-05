@@ -14,18 +14,31 @@ servidor.use(express.json());
 
 servidor.use("/pruebas", express.static("./pruebas"));
 
-servidor.get("/colores", async (peticion,respuesta) => {
-    try{
 
-        let colores = await leerColores();
-
-        respuesta.json(colores);
-
-    }catch(error){
-        respuesta.status(500);
-        respuesta.json({ error : "error en el servidor" });    
-    }
+servidor.get("/colores", async (req, res) => {
+  try {
+    console.log("➡️ /colores llamado");
+    let colores = await leerColores();
+    console.log("✔️ Colores leídos:", colores);
+    res.json(colores);
+  } catch (error) {
+    console.log("❌ ERROR EN /colores:", error);
+    res.status(500).json({ error: "error en el servidor" });
+  }
 });
+
+// servidor.get("/colores", async (peticion,respuesta) => {
+//     try{
+
+//         let colores = await leerColores();
+
+//         respuesta.json(colores);
+
+//     }catch(error){
+//         respuesta.status(500);
+//         respuesta.json({ error : "error en el servidor" });    
+//     }
+// });
 
 servidor.post("/colores/nuevo", async (peticion,respuesta,siguiente) => {
     let {r,g,b} = peticion.body;

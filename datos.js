@@ -16,32 +16,19 @@ async function conectar() {
   return client;
 }
 
+export async function leerColores() {
+  const conexion = await conectar();
+  const coleccion = conexion.db("colores").collection("colores");
 
-servidor.get("/colores", async (req, res) => {
-  try {
-    console.log("➡️ /colores llamado");
-    let colores = await leerColores();
-    console.log("✔️ Colores leídos:", colores);
-    res.json(colores);
-  } catch (error) {
-    console.log("❌ ERROR EN /colores:", error);
-    res.status(500).json({ error: "error en el servidor" });
-  }
-});
+  const docs = await coleccion.find({}).toArray();
 
-// export async function leerColores() {
-//   const conexion = await conectar();
-//   const coleccion = conexion.db("colores").collection("colores");
-
-//   const docs = await coleccion.find({}).toArray();
-
-//   return docs.map(({ _id, r, g, b }) => ({
-//     id: _id,
-//     r,
-//     g,
-//     b
-//   }));
-// }
+  return docs.map(({ _id, r, g, b }) => ({
+    id: _id,
+    r,
+    g,
+    b
+  }));
+}
 
 
 // export function leerColores(){
